@@ -15,8 +15,10 @@ def integrel():
     n = int(nn.get())
     h=(b-a)/n
     s=(function(a)+function(b))/2
+    x = a + h
     for i in range(n-1):
-        s+=function(a+i*h)
+        s+=function(x)
+        x+=h
     s*=h
     p = pervoobraznaya(b)-pervoobraznaya(a)
     messagebox.showinfo('Результат', f'Приближённое значение (м-д трапеций) ≈ {s}',
