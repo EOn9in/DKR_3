@@ -1,28 +1,33 @@
-from tkinter import *
-from tkinter import ttk
-from tkinter import messagebox
-
-def function(x):
-  f = x**3 + x**2 + 5*x + 3
-  return f
-def pervoobraznaya(x):
-  per = (x**4)/4 + (x**3)/3 + 2.5*x**2 + 3*x
-  return per
-
 def integrel():
     a = int(aa.get())
     b = int(bb.get())
     n = int(nn.get())
     h=(b-a)/n
     s=(function(a)+function(b))/2
-    x = a + h
+    x = a+h
     for i in range(n-1):
         s+=function(x)
         x+=h
     s*=h
     p = pervoobraznaya(b)-pervoobraznaya(a)
-    messagebox.showinfo('Результат', f'Приближённое значение (м-д трапеций) ≈ {s}',
-                        detail=f"Точное значение = {p} \n Погрешность = {abs(p-s)} ",)
+    messagebox.showinfo('Результат', f"Точное значение = {p}")
+
+
+def trap():
+    a = int(aa.get())
+    b = int(bb.get())
+    n = int(nn.get())
+    h=(b-a)/n
+    s=(function(a)+function(b))/2
+    x = a+h
+    for i in range(n-1):
+        s+=function(x)
+        x+=h
+    s*=h
+    p = pervoobraznaya(b)-pervoobraznaya(a)
+    messagebox.showinfo('Результат',f"Приближённое значение (метод трапеций) ≈ {s}",
+    detail = f'Погрешность метода = {abs(p-s)}')
+
     
 
 
@@ -77,8 +82,11 @@ n.pack()
 nn = Entry(frame)
 nn.pack()
 
-btn = Button(frame, text='Расчитать',command = integrel)
+btn = Button(frame, text='Расчитать точное значение',command = integrel)
 btn.pack(fill =X)
+
+butn = Button(frame,text = 'Вычислить методом трапеций',command = trap)
+butn.pack(fill =X)
 
 buttonEg = Button (frame, text='Выход',command=ExitApp)
 buttonEg.pack(anchor=SE)
