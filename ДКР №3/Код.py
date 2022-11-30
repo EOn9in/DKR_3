@@ -1,3 +1,15 @@
+from tkinter import *
+from tkinter import ttk
+from tkinter import messagebox
+
+def function(x):
+  f = x**3 + x**2 + 5*x + 3
+  return f
+
+def pervoobraznaya(x):
+  per = (x**4)/4 + (x**3)/3 + 2.5*x**2 + 3*x
+  return per
+
 def integrel():
     a = int(aa.get())
     b = int(bb.get())
